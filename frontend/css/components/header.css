@@ -1,0 +1,187 @@
+/* ═══════════════════════════════════════════════════════════════════
+   header.css — Navigation sticky + menu mobile
+   ═══════════════════════════════════════════════════════════════════ */
+
+#header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 900;
+  transition: background var(--dur) var(--ease),
+              backdrop-filter var(--dur),
+              padding var(--dur) var(--ease),
+              box-shadow var(--dur);
+}
+
+#header.scrolled {
+  background: rgba(8, 8, 8, .95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 1px 0 rgba(201, 169, 110, .12);
+}
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 22px clamp(20px, 5vw, 60px);
+  transition: padding var(--dur) var(--ease);
+}
+
+#header.scrolled .nav-container {
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
+
+/* ── Logo ───────────────────────────────────────────────────────── */
+.nav-logo img { height: 48px; width: auto; }
+
+.nav-logo-text {
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: var(--gold);
+  letter-spacing: .08em;
+}
+
+/* ── Liens ──────────────────────────────────────────────────────── */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.nav-link {
+  font-size: .75rem;
+  font-weight: 400;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: rgba(245, 240, 232, .7);
+  padding: 8px 16px;
+  position: relative;
+  transition: color var(--dur);
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 4px; left: 16px; right: 16px;
+  height: 1px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform .35s var(--ease);
+}
+
+.nav-link:hover,
+.nav-link.active { color: var(--white); }
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* ── Actions nav (tel + CTA) ────────────────────────────────────── */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-shrink: 0;
+}
+
+.nav-tel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: .78rem;
+  font-weight: 400;
+  letter-spacing: .08em;
+  color: var(--gold);
+  white-space: nowrap;
+  transition: color var(--dur);
+}
+
+.nav-tel i { font-size: .85rem; }
+.nav-tel:hover { color: var(--gold-light); }
+
+.btn-devis {
+  padding: 10px 22px;
+  background: transparent;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  font-size: .72rem;
+  font-weight: 500;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  border-radius: var(--radius);
+  white-space: nowrap;
+  transition: background var(--dur), color var(--dur), transform var(--dur);
+}
+
+.btn-devis:hover {
+  background: var(--gold);
+  color: var(--black);
+  transform: translateY(-1px);
+}
+
+/* ── Burger mobile ──────────────────────────────────────────────── */
+.nav-burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 36px; height: 36px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.nav-burger span {
+  display: block;
+  width: 100%; height: 1px;
+  background: var(--white);
+  transition: transform .35s var(--ease), opacity .3s, background var(--dur);
+}
+
+.nav-burger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.nav-burger.open span:nth-child(2) { opacity: 0; }
+.nav-burger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+/* ── Responsive ─────────────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .nav-links { display: none; }
+  .nav-tel   { display: none; }
+  .nav-burger { display: flex; }
+
+  /* Menu mobile plein écran */
+  .nav-links.open {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    inset: 0;
+    background: rgba(8, 8, 8, .98);
+    z-index: 800;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    padding: 80px 40px 40px;
+  }
+
+  .nav-links.open .nav-link {
+    font-size: 1.6rem;
+    letter-spacing: .08em;
+    padding: 16px 0;
+    font-family: var(--font-serif);
+    font-weight: 300;
+    color: var(--white);
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid var(--grey-border);
+  }
+
+  .nav-links.open .nav-link:last-child { border-bottom: none; }
+  .nav-links.open .nav-link::after { display: none; }
+  .nav-actions { z-index: 801; position: relative; }
+}

@@ -1,0 +1,121 @@
+/* ═══════════════════════════════════════════════════════════════════
+   carousel.css — Carousel avis Google
+   ═══════════════════════════════════════════════════════════════════ */
+
+.avis {
+  padding: var(--section-pad) 0;
+  background: var(--black);
+  overflow: hidden;
+}
+
+.avis-score-wrap { margin-top: 8px; }
+
+.avis-stars {
+  font-size: 1.6rem;
+  color: #fbbf24;
+  letter-spacing: 3px;
+  margin-bottom: 8px;
+}
+
+/* ── Carousel wrapper ───────────────────────────────────────────── */
+.avis-carousel-wrap { position: relative; overflow: hidden; }
+
+.avis-carousel {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  transition: transform .5s var(--ease-out);
+}
+
+/* ── Carte avis ─────────────────────────────────────────────────── */
+.avis-card {
+  background: var(--black-card);
+  border: 1px solid var(--grey-border);
+  padding: 28px 24px;
+  position: relative;
+  transition: border-color var(--dur), transform var(--dur);
+}
+
+.avis-card::before {
+  content: '"';
+  position: absolute;
+  top: 16px; right: 24px;
+  font-family: var(--font-serif);
+  font-size: 5rem;
+  line-height: 1;
+  color: rgba(201, 169, 110, .08);
+  pointer-events: none;
+}
+
+.avis-card:hover { border-color: rgba(201, 169, 110, .3); transform: translateY(-3px); }
+
+.avis-card-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.avis-avatar {
+  width: 42px; height: 42px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+  color: var(--black);
+  font-family: var(--font-sans);
+  font-size: .9rem;
+  font-weight: 600;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+
+.avis-name { display: block; font-size: .85rem; font-weight: 500; color: var(--white); }
+.avis-stars-small { font-size: .85rem; color: #fbbf24; letter-spacing: 1px; }
+.avis-google-icon { margin-left: auto; font-size: 1rem; color: var(--grey); }
+.avis-card > p { font-size: .875rem; color: var(--grey-light); line-height: 1.7; font-style: italic; margin-bottom: 14px; }
+.avis-date { font-size: .72rem; color: var(--grey); letter-spacing: .08em; }
+
+/* ── Contrôles carousel ─────────────────────────────────────────── */
+.carousel-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 36px;
+}
+
+.carousel-btn {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--grey-border);
+  background: none;
+  color: var(--gold);
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: border-color var(--dur), background var(--dur), transform var(--dur);
+  font-size: .9rem;
+}
+
+.carousel-btn:hover { border-color: var(--gold); background: var(--gold-glow); transform: scale(1.05); }
+
+.carousel-dots { display: flex; gap: 8px; }
+
+.carousel-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--grey-border);
+  border: none;
+  cursor: pointer;
+  transition: background var(--dur), transform var(--dur);
+}
+
+.carousel-dot.active { background: var(--gold); transform: scale(1.3); }
+
+/* ── CTA ────────────────────────────────────────────────────────── */
+.avis-cta { text-align: center; margin-top: 44px; }
+.btn-google { border-color: rgba(201, 169, 110, .35); }
+.btn-google:hover { border-color: var(--gold); }
+
+/* ── Responsive ─────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .avis-carousel { grid-template-columns: 1fr; }
+}

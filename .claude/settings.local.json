@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir -p frontend/assets/photos/galerie)",
+      "Bash(cp assets/photos/LISEZ-MOI.txt frontend/assets/photos/LISEZ-MOI.txt)",
+      "Bash(find 'a:/Téléchargements/SITE DIAMANTE K' -name logo* -o -name *.ico)",
+      "Bash(cp hero.jpg hero.png)"
+    ]
+  }
+}

@@ -1,0 +1,159 @@
+/* ═══════════════════════════════════════════════════════════════════
+   gallery.css — Galerie masonry filtrable + lightbox
+   ═══════════════════════════════════════════════════════════════════ */
+
+.galerie {
+  padding: var(--section-pad) 0;
+  background: var(--black-soft);
+}
+
+/* ── Filtres ────────────────────────────────────────────────────── */
+.galerie-filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4px;
+  margin-bottom: 40px;
+}
+
+.filter-btn {
+  font-family: var(--font-sans);
+  font-size: .72rem;
+  font-weight: 400;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--grey-light);
+  background: none;
+  border: 1px solid transparent;
+  padding: 8px 20px;
+  cursor: pointer;
+  border-radius: 30px;
+  transition: color var(--dur), border-color var(--dur), background var(--dur);
+}
+
+.filter-btn:hover { color: var(--white); border-color: var(--grey-border); }
+
+.filter-btn.active {
+  color: var(--gold);
+  border-color: var(--gold);
+  background: rgba(201, 169, 110, .06);
+}
+
+/* ── Grille masonry ─────────────────────────────────────────────── */
+.galerie-grid {
+  columns: 3;
+  column-gap: 3px;
+}
+
+.galerie-item {
+  break-inside: avoid;
+  margin-bottom: 3px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.galerie-img-wrap { position: relative; overflow: hidden; }
+
+.galerie-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .6s var(--ease);
+}
+
+.galerie-img-placeholder {
+  height: var(--h, 300px);
+  background: linear-gradient(135deg, #0f0f0f 0%, #1a1400 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.galerie-hover {
+  position: absolute;
+  inset: 0;
+  background: rgba(8, 8, 8, .45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity var(--dur);
+}
+
+.galerie-hover i {
+  font-size: 1.4rem;
+  color: var(--gold);
+  transform: scale(.8);
+  transition: transform var(--dur) var(--ease);
+}
+
+.galerie-item:hover .galerie-img    { transform: scale(1.05); }
+.galerie-item:hover .galerie-hover  { opacity: 1; }
+.galerie-item:hover .galerie-hover i { transform: scale(1); }
+.galerie-item.hidden                { display: none; }
+
+/* ── Lightbox ───────────────────────────────────────────────────── */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, .94);
+  z-index: 9990;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  backdrop-filter: blur(4px);
+}
+
+.lightbox-content {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+}
+
+.lightbox-img {
+  max-width: 90vw;
+  max-height: 85vh;
+  object-fit: contain;
+  border: 1px solid rgba(201, 169, 110, .2);
+}
+
+.lightbox-caption {
+  text-align: center;
+  font-size: .8rem;
+  color: var(--grey-light);
+  margin-top: 12px;
+  font-style: italic;
+}
+
+.lightbox-close,
+.lightbox-prev,
+.lightbox-next {
+  position: absolute;
+  background: none;
+  border: 1px solid rgba(201, 169, 110, .3);
+  color: var(--gold);
+  cursor: pointer;
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: .9rem;
+  transition: background var(--dur), border-color var(--dur), transform var(--dur);
+}
+
+.lightbox-close { top: 20px; right: 20px; }
+.lightbox-prev  { left: 20px; top: 50%; transform: translateY(-50%); }
+.lightbox-next  { right: 20px; top: 50%; transform: translateY(-50%); }
+
+.lightbox-close:hover,
+.lightbox-prev:hover,
+.lightbox-next:hover  { background: var(--gold-glow); border-color: var(--gold); transform: scale(1.1); }
+.lightbox-prev:hover  { transform: translateY(-50%) scale(1.1); }
+.lightbox-next:hover  { transform: translateY(-50%) scale(1.1); }
+
+/* ── Responsive ─────────────────────────────────────────────────── */
+@media (max-width: 1024px) { .galerie-grid { columns: 2; } }
+@media (max-width: 768px)  { .galerie-grid { columns: 1; } }

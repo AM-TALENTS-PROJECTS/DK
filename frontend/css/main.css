@@ -1,0 +1,349 @@
+/* ═══════════════════════════════════════════════════════════════════
+   main.css — Variables, reset, utilitaires, animations globales
+   Diamanté K · Traiteur Kasher Marseille
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ── Imports composants ─────────────────────────────────────────── */
+@import url('components/header.css');
+@import url('components/hero.css');
+@import url('components/sections.css');
+@import url('components/carousel.css');
+@import url('components/gallery.css');
+@import url('components/footer.css');
+
+/* ── Fonts ──────────────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@200;300;400;500;600&display=swap');
+
+/* ══════════════════════════════════════════════════════════════════
+   1. VARIABLES CSS
+══════════════════════════════════════════════════════════════════ */
+:root {
+  /* Palette */
+  --black:       #080808;
+  --black-soft:  #0f0f0f;
+  --black-card:  #111111;
+  --black-light: #1a1a1a;
+  --gold:        #c9a96e;
+  --gold-light:  #e0c48c;
+  --gold-dark:   #a8854d;
+  --gold-glow:   rgba(201, 169, 110, .18);
+  --white:       #f5f0e8;
+  --white-soft:  #ede7db;
+  --grey:        #666666;
+  --grey-light:  #999999;
+  --grey-border: #2a2a2a;
+
+  /* Typographie */
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-sans:  'Montserrat', system-ui, sans-serif;
+
+  /* Espacements */
+  --section-pad: clamp(80px, 10vw, 140px);
+  --container:   1280px;
+  --radius:      4px;
+  --radius-md:   8px;
+
+  /* Transitions */
+  --ease:     cubic-bezier(.25, .46, .45, .94);
+  --ease-out: cubic-bezier(.16, 1, .3, 1);
+  --dur:      .4s;
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   2. RESET & BASE
+══════════════════════════════════════════════════════════════════ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: var(--black);
+  color: var(--white);
+  font-family: var(--font-sans);
+  font-weight: 300;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+@media (max-width: 768px) {
+}
+
+img   { max-width: 100%; height: auto; display: block; }
+a     { color: inherit; text-decoration: none; transition: color var(--dur) var(--ease); }
+ul    { list-style: none; }
+address { font-style: normal; }
+
+a:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Masquer les anneaux de focus à la souris */
+html.using-mouse :focus { outline: none; }
+
+/* ══════════════════════════════════════════════════════════════════
+   3. GRAIN OVERLAY
+══════════════════════════════════════════════════════════════════ */
+.grain-svg {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9997;
+  pointer-events: none;
+  opacity: .055;
+}
+
+
+/* ══════════════════════════════════════════════════════════════════
+   5. LOADING SCREEN
+══════════════════════════════════════════════════════════════════ */
+#loading-screen {
+  position: fixed;
+  inset: 0;
+  background: var(--black);
+  z-index: 9996;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity .7s var(--ease), visibility .7s;
+}
+
+#loading-screen.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.loading-inner {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+}
+
+.loading-logo-wrap { animation: loadPulse 1.8s ease-in-out infinite; }
+.loading-logo      { width: 180px; height: auto; }
+
+.loading-logo-text {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 400;
+  color: var(--gold);
+  letter-spacing: .12em;
+}
+
+.loading-bar-track {
+  width: 200px; height: 1px;
+  background: var(--grey-border);
+  overflow: hidden;
+}
+
+.loading-bar-fill {
+  height: 100%;
+  background: var(--gold);
+  width: 0%;
+  transition: width .05s linear;
+  box-shadow: 0 0 12px var(--gold);
+}
+
+.loading-tagline {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: .9rem;
+  color: var(--gold);
+  letter-spacing: .2em;
+  opacity: .7;
+}
+
+@keyframes loadPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: .75; transform: scale(.97); }
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   6. UTILITAIRES
+══════════════════════════════════════════════════════════════════ */
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
+.container {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 clamp(20px, 5vw, 60px);
+}
+
+.gold-accent { color: var(--gold); }
+
+.section-overtitle {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: .72rem;
+  font-weight: 500;
+  letter-spacing: .35em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: clamp(48px, 7vw, 80px);
+}
+
+.section-header h2 {
+  font-family: var(--font-serif);
+  font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+  font-weight: 400;
+  line-height: 1.15;
+  color: var(--white);
+  margin-bottom: 20px;
+}
+
+.section-header h2 em { font-style: italic; color: var(--gold); }
+
+.section-desc {
+  max-width: 680px;
+  margin: 0 auto;
+  color: var(--grey-light);
+  font-size: .95rem;
+  line-height: 1.75;
+}
+
+.sub-title {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: var(--white);
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+/* ── Boutons globaux ──────────────────────────────────────────── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 32px;
+  background: var(--gold);
+  color: var(--black);
+  font-family: var(--font-sans);
+  font-size: .8rem;
+  font-weight: 500;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  border-radius: var(--radius);
+  transition: background var(--dur) var(--ease), transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+}
+
+.btn-primary:hover {
+  background: var(--gold-light);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(201, 169, 110, .3);
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 32px;
+  border: 1px solid rgba(201, 169, 110, .5);
+  color: var(--white);
+  font-family: var(--font-sans);
+  font-size: .8rem;
+  font-weight: 400;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  border-radius: var(--radius);
+  transition: border-color var(--dur), background var(--dur), transform var(--dur);
+}
+
+.btn-outline:hover {
+  border-color: var(--gold);
+  background: var(--gold-glow);
+  transform: translateY(-2px);
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   7. ANIMATIONS SCROLL
+══════════════════════════════════════════════════════════════════ */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity .8s var(--ease-out), transform .8s var(--ease-out);
+}
+
+.scroll-reveal.visible { opacity: 1; transform: translateY(0); }
+.scroll-reveal.delay-1 { transition-delay: .12s; }
+.scroll-reveal.delay-2 { transition-delay: .24s; }
+.scroll-reveal.delay-3 { transition-delay: .36s; }
+.scroll-reveal.delay-4 { transition-delay: .48s; }
+
+.reveal-up {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity .9s var(--ease-out), transform .9s var(--ease-out);
+}
+
+.reveal-up.visible  { opacity: 1; transform: translateY(0); }
+.reveal-up.delay-1  { transition-delay: .15s; }
+.reveal-up.delay-2  { transition-delay: .3s; }
+.reveal-up.delay-3  { transition-delay: .45s; }
+.reveal-up.delay-4  { transition-delay: .6s; }
+
+/* ══════════════════════════════════════════════════════════════════
+   8. RETOUR EN HAUT
+══════════════════════════════════════════════════════════════════ */
+.back-to-top {
+  position: fixed;
+  bottom: 32px; right: 32px;
+  width: 44px; height: 44px;
+  background: var(--black-card);
+  border: 1px solid rgba(201, 169, 110, .3);
+  color: var(--gold);
+  cursor: pointer;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: .9rem;
+  z-index: 500;
+  opacity: 0;
+  transform: translateY(16px);
+  pointer-events: none;
+  transition: opacity var(--dur), transform var(--dur), background var(--dur), border-color var(--dur);
+}
+
+.back-to-top.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: all;
+}
+
+.back-to-top:hover {
+  background: var(--gold);
+  color: var(--black);
+  border-color: var(--gold);
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   9. IMPRESSION
+══════════════════════════════════════════════════════════════════ */
+@media print {
+  .grain-svg, #loading-screen, #header, .back-to-top,
+  .scroll-indicator { display: none !important; }
+  body { background: white; color: black; }
+}

@@ -1,0 +1,35 @@
+{
+  "name": "diamantek",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Site vitrine Diamante K - backend NestJS",
+  "scripts": {
+    "build": "nest build",
+    "start": "node dist/main.js",
+    "start:dev": "nest start --watch",
+    "start:prod": "node dist/main.js"
+  },
+  "dependencies": {
+    "@nestjs/cli": "^11.0.10",
+    "@nestjs/common": "^11.1.7",
+    "@nestjs/config": "^4.0.2",
+    "@nestjs/core": "^11.1.7",
+    "@nestjs/platform-express": "^11.1.7",
+    "dotenv": "^17.2.3",
+    "express-session": "^1.18.2",
+    "helmet": "^8.1.0",
+    "nodemailer": "^7.0.7",
+    "sanitize-html": "^2.17.0",
+    "reflect-metadata": "^0.2.2",
+    "rxjs": "^7.8.2",
+    "typescript": "^5.9.3"
+  },
+  "devDependencies": {
+    "@nestjs/schematics": "^11.0.9",
+    "@nestjs/testing": "^11.1.7",
+    "@types/express": "^5.0.4",
+    "@types/express-session": "^1.18.2",
+    "@types/node": "^22.18.6",
+    "@types/nodemailer": "^7.0.2"
+  }
+}

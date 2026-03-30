@@ -1,0 +1,54 @@
+═══════════════════════════════════════════════════════════
+  DIAMANTÉ K — PHOTOS À PLACER DANS CE DOSSIER
+═══════════════════════════════════════════════════════════
+
+Placez vos photos dans ce dossier /assets/photos/
+Le site les chargera automatiquement.
+
+PHOTOS PRINCIPALES ATTENDUES :
+────────────────────────────────────────────────────────────
+  hero.jpg             — Photo plein écran section Hero
+                         (format large, min 1920x1080px)
+
+  mariage.jpg          — Carte prestation "Mariages & Réceptions"
+  cocktail.jpg         — Carte prestation "Cocktails & Soirées"
+  brunch.jpg           — Carte prestation "Brunchs & Petits Déjeuners"
+  shabbat.jpg          — Carte prestation "Shabbat & Fêtes Juives"
+  entreprise.jpg       — Carte prestation "Événements d'Entreprise"
+  international.jpg    — Carte prestation "Événements Internationaux"
+
+  jeremy-ayache.jpg    — Portrait Jérémy Ayache (section Histoire)
+                         (format portrait, min 600x800px)
+
+  og-image.jpg         — Image Open Graph (réseaux sociaux)
+                         (format 1200x630px)
+
+
+PHOTOS GALERIE (dossier assets/photos/galerie/) :
+────────────────────────────────────────────────────────────
+  mariage-1.jpg        — Galerie mariages
+  mariage-2.jpg        — Galerie mariages
+  buffet-1.jpg         — Galerie buffets
+  buffet-2.jpg         — Galerie buffets
+  dessert-1.jpg        — Galerie desserts
+  dessert-2.jpg        — Galerie desserts
+  cocktail-1.jpg       — Galerie cocktails
+  cocktail-2.jpg       — Galerie cocktails
+  equipe-1.jpg         — Galerie équipe
+
+
+CONSEILS :
+────────────────────────────────────────────────────────────
+• Compressez les photos avant upload (TinyPNG, Squoosh, etc.)
+• Taille max recommandée : 400-800 Ko par photo
+• Format préféré : WebP ou JPEG qualité 80-85%
+• Les photos manquantes sont remplacées par un fond sombre doré
+
+
+LOGO :
+────────────────────────────────────────────────────────────
+  Placez votre logo : assets/logo.png
+  Format recommandé : PNG transparent, min 400px de large
+
+
+═══════════════════════════════════════════════════════════

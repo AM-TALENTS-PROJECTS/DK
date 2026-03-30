@@ -1,0 +1,95 @@
+# ═══════════════════════════════════════════════════════════
+#  .gitignore — Diamanté K Traiteur
+#  NE JAMAIS committer les secrets, clefs et données sensibles
+# ═══════════════════════════════════════════════════════════
+
+# ── Variables d'environnement (SECRETS) ─────────────────────
+.env
+.env.local
+.env.production
+.env.staging
+*.env
+!.env.example          # Garder uniquement le template vide
+
+# ── Build outputs ────────────────────────────────────────────
+dist/
+build/
+
+# ── Logs (peuvent contenir des données sensibles) ────────────
+*.log
+logs/
+log/
+*.log.*
+
+# ── Clefs API et certificats ─────────────────────────────────
+*.pem
+*.key
+*.cert
+*.crt
+*.p12
+*.pfx
+service_account*.json
+credentials*.json
+*_credentials.json
+*_secret*.json
+*secret*.json
+*token*.json
+oauth*.json
+api_keys*
+apikeys*
+
+# ── Sauvegardes et fichiers temporaires ──────────────────────
+*.bak
+*.backup
+*.swp
+*.swo
+*~
+*.tmp
+*.temp
+Thumbs.db
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+desktop.ini
+
+# ── Photos et médias clients (trop lourds pour git) ─────────
+# Décommenter si les photos sont volumineuses :
+# frontend/assets/photos/*.jpg
+# frontend/assets/photos/*.jpeg
+# frontend/assets/photos/*.png
+# frontend/assets/photos/*.webp
+# frontend/assets/photos/galerie/
+
+# ── IDEs et éditeurs ─────────────────────────────────────────
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.project
+.classpath
+
+# ── Node (si outils de build ajoutés plus tard) ──────────────
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.npm
+
+# ── Déploiement ──────────────────────────────────────────────
+.vercel
+.netlify
+.heroku
+*.pid
+
+# ── Données sensibles diverses ───────────────────────────────
+# Listes de clients, devis, factures — jamais dans git
+clients*.csv
+devis*.pdf
+factures*.pdf
+export*.csv
