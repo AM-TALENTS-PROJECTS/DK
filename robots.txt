@@ -1,5 +1,5 @@
 # robots.txt — Diamanté K Traiteur Kasher Marseille
-# https://www.diamantektraiteur.com
+# https://www.diamantek-traiteur.com
 
 User-agent: *
 Allow: /
@@ -10,7 +10,7 @@ Allow: /style.css
 Allow: /script.js
 
 # Sitemap
-Sitemap: https://www.diamantektraiteur.com/sitemap.xml
+Sitemap: https://www.diamantek-traiteur.com/sitemap.xml
 
 # Crawl-delay (optionnel — décommenter si nécessaire)
 # Crawl-delay: 10

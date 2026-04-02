@@ -4,7 +4,7 @@
 
   <!-- Page principale -->
   <url>
-    <loc>https://www.diamantektraiteur.com/</loc>
+    <loc>https://www.diamantek-traiteur.com/</loc>
     <lastmod>2026-03-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
@@ -12,35 +12,35 @@
 
   <!-- Sections (ancres SEO) -->
   <url>
-    <loc>https://www.diamantektraiteur.com/#prestations</loc>
+    <loc>https://www.diamantek-traiteur.com/#prestations</loc>
     <lastmod>2026-03-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://www.diamantektraiteur.com/#histoire</loc>
+    <loc>https://www.diamantek-traiteur.com/#histoire</loc>
     <lastmod>2026-03-30</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://www.diamantektraiteur.com/#galerie</loc>
+    <loc>https://www.diamantek-traiteur.com/#galerie</loc>
     <lastmod>2026-03-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://www.diamantektraiteur.com/#avis</loc>
+    <loc>https://www.diamantek-traiteur.com/#avis</loc>
     <lastmod>2026-03-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://www.diamantektraiteur.com/#contact</loc>
+    <loc>https://www.diamantek-traiteur.com/#contact</loc>
     <lastmod>2026-03-30</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.9</priority>

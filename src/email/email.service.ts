@@ -72,7 +72,7 @@ export class EmailService {
       data.message || 'Aucun message',
       '',
       '=============================================',
-      'Envoye depuis diamantektraiteur.com',
+      'Envoye depuis diamantek-traiteur.com',
     ];
 
     return lines.join('\n');
@@ -105,7 +105,7 @@ export class EmailService {
     </div>
   </div>
   <div style="padding:16px;background:#0a0a0a;text-align:center">
-    <p style="margin:0;color:#666;font-size:11px">diamantektraiteur.com</p>
+    <p style="margin:0;color:#666;font-size:11px">diamantek-traiteur.com</p>
   </div>
 </div>
 </body></html>`;
