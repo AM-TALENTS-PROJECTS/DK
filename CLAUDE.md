@@ -139,7 +139,7 @@ Les variables CSS sont dans `frontend/css/main.css` section `:root`.
 - Avis Google : **4,9/5 — 132 avis** (mettre à jour uniquement sur demande)
 - Texte section histoire : Jérémy Ayache, +10 ans, +1000 événements
 - Descriptions des prestations (6 cartes)
-- Références clients : Mairie de Marseille, Keren Hayessod, Optical Center, La Poste, Audi
+- Références clients : supprimées du site (retirées sur demande client)
 - Certifications : Halavi & Bassari
 
 ---
