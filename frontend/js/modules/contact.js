@@ -48,7 +48,9 @@ export function initContactForm() {
       trackConversion();
     } catch (err) {
       showError('Une erreur s\'est produite. Contactez-nous directement par téléphone.');
-      console.error('EmailJS error:', err);
+      console.error('EmailJS error details:', JSON.stringify(err));
+      console.error('EmailJS error text:', err.text);
+      console.error('EmailJS error status:', err.status);
     } finally {
       setLoading(false);
     }
