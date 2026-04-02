@@ -5,16 +5,18 @@
 
 const EMAILJS_SERVICE_ID  = 'service_h4qnz0w';
 const EMAILJS_TEMPLATE_ID = '5tcaq0a';
-const EMAILJS_PUBLIC_KEY  = 'dE1barNKWhgbdBjH';
+const EMAILJS_PUBLIC_KEY  = '-dE1barNKWhgbdBjH';
 
 export function initContactForm() {
   const form   = document.getElementById('contact-form');
   const submit = document.getElementById('submit-btn');
   if (!form) return;
 
-  // Initialiser EmailJS
+  // Initialiser EmailJS (syntaxe v4)
   if (typeof emailjs !== 'undefined') {
-    emailjs.init(EMAILJS_PUBLIC_KEY);
+    (function() {
+      emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+    })();
   }
 
   // Date minimum = aujourd'hui
