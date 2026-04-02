@@ -193,3 +193,12 @@ Les variables CSS sont dans `frontend/css/main.css` section `:root`.
 - Migration SMTP vers `nodemailer`
 - Mise à jour des scripts de lancement Windows, du `.env.example` et de `README.md`
 - Suppression des anciens composants backend pour un déploiement 100% Node.js
+
+### Session 2026-04-02 (Fix déploiement automatique frontend)
+**Réalisé** :
+- Ajout de `cpx2` en devDependency (copie cross-platform Windows/Linux)
+- Script `build` mis à jour : `nest build && cpx "frontend/**/*" dist/frontend`
+- Le frontend est désormais copié dans `dist/frontend/` à chaque build
+- `runtime-paths.ts` gère déjà la résolution du chemin (dev = `./frontend`, prod = `dist/frontend`)
+- README mis à jour avec le workflow de déploiement Git automatique
+- Suppression des références clients (Mairie de Marseille, Keren Hayessod, Optical Center, La Poste, Audi) sur demande

@@ -45,6 +45,36 @@ npm run build
 npm run start:prod
 ```
 
+Le script `build` effectue deux opérations :
+1. Compilation TypeScript via NestJS (`nest build` → `dist/`)
+2. Copie du dossier `frontend/` vers `dist/frontend/` (via `cpx2`, cross-platform)
+
+## Déploiement automatique (Hostinger Git)
+
+Le déploiement est entièrement automatique après un `git push`. Aucune manipulation manuelle n'est nécessaire.
+
+**Workflow :**
+
+```bash
+# 1. Modifier le code en local
+# 2. Committer et pousser
+git add .
+git commit -m "description de la modification"
+git push
+# → Hostinger détecte le push et exécute automatiquement :
+#   npm install && npm run build && npm run start:prod
+# → Le site est mis à jour, frontend inclus
+```
+
+**Ce qui se passe sur le serveur :**
+
+| Étape | Commande | Résultat |
+|---|---|---|
+| Installation | `npm install` | Dépendances + devDependencies installées |
+| Build | `nest build` | TypeScript compilé dans `dist/` |
+| Copie frontend | `cpx "frontend/**/*" dist/frontend` | Tous les fichiers statiques copiés dans `dist/frontend/` |
+| Démarrage | `node dist/main.js` | Serveur lancé, sert `dist/frontend/` en production |
+
 ## Variables d'environnement
 
 ```env
