@@ -202,3 +202,14 @@ Les variables CSS sont dans `frontend/css/main.css` section `:root`.
 - `runtime-paths.ts` gère déjà la résolution du chemin (dev = `./frontend`, prod = `dist/frontend`)
 - README mis à jour avec le workflow de déploiement Git automatique
 - Suppression des références clients (Mairie de Marseille, Keren Hayessod, Optical Center, La Poste, Audi) sur demande
+
+### Session 2026-04-02 (Corrections finales contenu)
+**Réalisé** :
+- **Avis Google** : 6 faux avis remplacés par 8 vrais avis Google vérifiés
+- **Prénom** : "Jérémy" → "Jérémie" partout (index.html, mentions-legales.html, cgv.html, politique-confidentialite.html)
+- **Formulation avis** : "Quasi meilleur traiteur kasher de la région" → "Traiteur kasher parmi les mieux notés de Marseille et du Grand Sud"
+- **Hébergeur** : OVH remplacé par Hostinger International Ltd. (mentions-legales.html + politique-confidentialite.html)
+- **Partenaires** : "Animation & DJ" supprimé
+- **Canonical tags** : déjà présents sur toutes les pages
+- **Sitemap/robots.txt** : déjà sur le bon domaine (www.diamantektraiteur.com)
+- **URLs Hostinger staging** : aucune trouvée dans les fichiers frontend (déjà propres)
