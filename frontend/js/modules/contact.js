@@ -4,7 +4,7 @@
  */
 
 const EMAILJS_SERVICE_ID  = 'service_h4qnz0w';
-const EMAILJS_TEMPLATE_ID = '5tcaq0a';
+const EMAILJS_TEMPLATE_ID = 'template_pi3fndy';
 const EMAILJS_PUBLIC_KEY  = '-dE1barNKWhgbdBjH';
 
 export function initContactForm() {
