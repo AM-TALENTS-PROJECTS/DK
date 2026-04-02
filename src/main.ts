@@ -55,11 +55,11 @@ async function bootstrap() {
       contentSecurityPolicy: {
         directives: {
           defaultSrc: ["'self'"],
-          scriptSrc: ["'self'", 'cdnjs.cloudflare.com'],
+          scriptSrc: ["'self'", 'cdnjs.cloudflare.com', 'cdn.jsdelivr.net'],
           styleSrc: ["'self'", 'fonts.googleapis.com', 'cdnjs.cloudflare.com'],
           fontSrc: ['fonts.gstatic.com', 'cdnjs.cloudflare.com'],
           imgSrc: ["'self'", 'data:', 'www.google.com', 'www.gstatic.com'],
-          connectSrc: ["'self'"],
+          connectSrc: ["'self'", 'api.emailjs.com'],
           frameAncestors: ["'none'"],
         },
       },

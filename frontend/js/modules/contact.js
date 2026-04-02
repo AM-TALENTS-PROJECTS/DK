@@ -1,69 +1,52 @@
 /**
  * contact.js — Formulaire de devis
- * Récupère le token CSRF, valide, soumet en JSON vers /api/contact.
+ * Envoi via EmailJS (service côté client), pas de backend requis.
  */
 
+const EMAILJS_SERVICE_ID  = 'service_h4qnz0w';
+const EMAILJS_TEMPLATE_ID = '5tcaq0a';
+const EMAILJS_PUBLIC_KEY  = 'dE1barNKWhgbdBjH';
+
 export function initContactForm() {
-  const form    = document.getElementById('contact-form');
-  const success = document.getElementById('form-success');
-  const error   = document.getElementById('form-error');
-  const submit  = document.getElementById('submit-btn');
+  const form   = document.getElementById('contact-form');
+  const submit = document.getElementById('submit-btn');
   if (!form) return;
+
+  // Initialiser EmailJS
+  if (typeof emailjs !== 'undefined') {
+    emailjs.init(EMAILJS_PUBLIC_KEY);
+  }
 
   // Date minimum = aujourd'hui
   const dateInput = document.getElementById('date-event');
   if (dateInput) dateInput.min = new Date().toISOString().split('T')[0];
 
-  // Récupérer le CSRF token au chargement
-  let csrfToken = '';
-  fetchCsrfToken().then(t => { csrfToken = t; });
-
   form.addEventListener('submit', async e => {
     e.preventDefault();
 
-    // Validation HTML5 côté client (complémentaire, pas suffisante)
     if (!validateRequired()) return;
 
-    // Mode démo si l'action contient encore le placeholder
-    if (form.action.includes('YOUR_FORM_ID')) {
-      showSuccess('(Démo — configurez /api/contact dans le backend serveur)');
-      form.reset();
-      return;
-    }
-
-    setLoading(true);
     hideMessages();
+    setLoading(true);
 
-    // Renouveler le token si expiré
-    if (!csrfToken) csrfToken = await fetchCsrfToken();
-
-    const body = buildPayload();
+    const templateParams = {
+      nom:            form.querySelector('[name="nom"]').value,
+      email:          form.querySelector('[name="email"]').value,
+      telephone:      form.querySelector('[name="telephone"]').value,
+      type_evenement: form.querySelector('[name="type_evenement"]').value,
+      date:           form.querySelector('[name="date"]').value,
+      convives:       form.querySelector('[name="convives"]').value,
+      message:        form.querySelector('[name="message"]').value,
+    };
 
     try {
-      const res = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'X-CSRF-Token': csrfToken,
-        },
-        body: JSON.stringify(body),
-      });
-
-      const data = await res.json().catch(() => ({}));
-
-      if (res.ok && data.success) {
-        showSuccess(data.message || 'Votre demande a bien été envoyée. Nous vous répondons sous 24h.');
-        form.reset();
-        csrfToken = '';      // token consommé — sera renouvelé à la prochaine soumission
-        trackConversion();
-      } else if (res.status === 422 && data.fields) {
-        highlightFields(data.fields);
-        showError('Veuillez corriger les champs indiqués.');
-      } else {
-        showError(data.error || 'Une erreur technique est survenue. Contactez-nous directement par téléphone.');
-      }
-    } catch {
-      showError('Impossible d\'envoyer votre demande. Vérifiez votre connexion.');
+      await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams);
+      showSuccess('Merci ! Votre demande a bien été envoyée. Nous vous répondons sous 24h.');
+      form.reset();
+      trackConversion();
+    } catch (err) {
+      showError('Une erreur s\'est produite. Contactez-nous directement par téléphone.');
+      console.error('EmailJS error:', err);
     } finally {
       setLoading(false);
     }
@@ -77,24 +60,6 @@ export function initContactForm() {
 
 // ── Utilitaires privés ────────────────────────────────────────────────────────
 
-async function fetchCsrfToken() {
-  try {
-    const res  = await fetch('/api/csrf-token', { credentials: 'same-origin' });
-    const data = await res.json();
-    return data.csrf_token || '';
-  } catch {
-    return '';
-  }
-}
-
-function buildPayload() {
-  const form = document.getElementById('contact-form');
-  const fd   = new FormData(form);
-  const obj  = {};
-  for (const [k, v] of fd.entries()) obj[k] = v;
-  return obj;
-}
-
 function validateRequired() {
   const form = document.getElementById('contact-form');
   let valid  = true;
@@ -105,17 +70,9 @@ function validateRequired() {
     }
   });
   if (!valid) {
-    form.querySelector('[required]:not([value])') ?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    form.querySelector('[required]:invalid')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
   }
   return valid;
-}
-
-function highlightFields(fields) {
-  const form = document.getElementById('contact-form');
-  Object.keys(fields).forEach(name => {
-    const el = form.querySelector(`[name="${name}"]`);
-    if (el) el.style.borderColor = '#ff6b6b';
-  });
 }
 
 function setLoading(on) {

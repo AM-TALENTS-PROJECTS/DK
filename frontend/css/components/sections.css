@@ -399,10 +399,13 @@
 .partenaires-list { margin-bottom: clamp(48px, 6vw, 80px); }
 
 .partners-grid {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 2px;
 }
+
+.partner-item { flex: 0 0 calc(20% - 2px); }
 
 .partner-item {
   display: flex;
@@ -611,7 +614,7 @@ textarea { resize: vertical; min-height: 100px; }
 /* ── Responsive ─────────────────────────────────────────────────── */
 @media (max-width: 1200px) {
   .prestations-grid { grid-template-columns: repeat(2, 1fr); }
-  .partners-grid    { grid-template-columns: repeat(3, 1fr); }
+  .partner-item     { flex: 0 0 calc(33.333% - 2px); }
 }
 
 @media (max-width: 1024px) {
@@ -627,7 +630,7 @@ textarea { resize: vertical; min-height: 100px; }
   .histoire-certifs { flex-direction: row; gap: 12px; }
   .certif-card { flex: 1; }
   .certif-grid { grid-template-columns: 1fr; }
-  .partners-grid { grid-template-columns: repeat(2, 1fr); }
+  .partner-item  { flex: 0 0 calc(50% - 2px); }
   .form-row { grid-template-columns: 1fr; }
   .contact-form-wrap { padding: 24px 20px; }
   .refs-logos { gap: 8px; }
