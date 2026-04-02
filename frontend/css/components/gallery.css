@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════════════
-   gallery.css — Galerie masonry filtrable + lightbox
+   gallery.css — Galerie magazine éditorial paginée + lightbox
    ═══════════════════════════════════════════════════════════════════ */
 
 .galerie {
@@ -13,7 +13,7 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 4px;
-  margin-bottom: 40px;
+  margin-bottom: 48px;
 }
 
 .filter-btn {
@@ -39,61 +39,210 @@
   background: rgba(201, 169, 110, .06);
 }
 
-/* ── Grille masonry ─────────────────────────────────────────────── */
-.galerie-grid {
-  columns: 3;
-  column-gap: 3px;
+/* ── Conteneur magazine ──────────────────────────────────────────── */
+.galerie-magazine {
+  position: relative;
 }
 
-.galerie-item {
-  break-inside: avoid;
-  margin-bottom: 3px;
+/* ── Composition A : grande à gauche, 2 petites à droite ─────────── */
+.galerie-magazine.comp-a {
+  display: grid;
+  grid-template-columns: 1.8fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 4px;
+  height: 560px;
+}
+
+.galerie-magazine.comp-a .mag-item:nth-child(1) {
+  grid-column: 1;
+  grid-row: 1 / 3;
+}
+
+.galerie-magazine.comp-a .mag-item:nth-child(2) {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.galerie-magazine.comp-a .mag-item:nth-child(3) {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+/* ── Composition B : 2 petites à gauche, grande à droite ─────────── */
+.galerie-magazine.comp-b {
+  display: grid;
+  grid-template-columns: 1fr 1.8fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 4px;
+  height: 560px;
+}
+
+.galerie-magazine.comp-b .mag-item:nth-child(1) {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.galerie-magazine.comp-b .mag-item:nth-child(2) {
+  grid-column: 2;
+  grid-row: 1 / 3;
+}
+
+.galerie-magazine.comp-b .mag-item:nth-child(3) {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+/* ── Composition C : trois colonnes égales ──────────────────────── */
+.galerie-magazine.comp-c {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 4px;
+  height: 560px;
+}
+
+/* ── Composition tablette : 1 grande + 1 petite ─────────────────── */
+.galerie-magazine.comp-two {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 4px;
+  height: 420px;
+}
+
+/* ── Composition mobile : pleine largeur ────────────────────────── */
+.galerie-magazine.comp-one {
+  display: grid;
+  grid-template-columns: 1fr;
+  height: 460px;
+}
+
+/* ── Item magazine ──────────────────────────────────────────────── */
+.mag-item {
+  position: relative;
   overflow: hidden;
   cursor: pointer;
+  min-height: 0; /* requis pour les enfants de grid */
+  background: #0a0a0a;
 }
 
-.galerie-img-wrap { position: relative; overflow: hidden; }
+.mag-item__img-wrap {
+  position: absolute;
+  inset: 0;
+}
 
-.galerie-img {
+.mag-item__placeholder {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #0f0f0f 0%, #1a1400 100%);
+}
+
+.mag-item__img {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform .6s var(--ease);
+  transition: transform .65s cubic-bezier(.25, .46, .45, .94), filter .4s ease;
+  will-change: transform;
 }
 
-.galerie-img-placeholder {
-  height: var(--h, 300px);
-  background: linear-gradient(135deg, #0f0f0f 0%, #1a1400 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.mag-item:hover .mag-item__img {
+  transform: scale(1.04);
+  filter: brightness(.82);
 }
 
-.galerie-hover {
+/* ── Overlay hover ──────────────────────────────────────────────── */
+.mag-item__overlay {
   position: absolute;
   inset: 0;
-  background: rgba(8, 8, 8, .45);
+  background: linear-gradient(to top, rgba(8, 8, 8, .78) 0%, transparent 55%);
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 20px 24px;
+  opacity: 0;
+  transition: opacity .4s ease;
+}
+
+.mag-item:hover .mag-item__overlay { opacity: 1; }
+
+.mag-item__label {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: .72rem;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.mag-item__zoom {
+  color: var(--gold);
+  font-size: .9rem;
+  transition: transform var(--dur);
+}
+
+.mag-item:hover .mag-item__zoom { transform: scale(1.15); }
+
+/* ── Pagination ──────────────────────────────────────────────────── */
+.galerie-pagination {
   display: flex;
   align-items: center;
   justify-content: center;
-  opacity: 0;
-  transition: opacity var(--dur);
+  gap: 28px;
+  margin-top: 52px;
+  min-height: 44px;
 }
 
-.galerie-hover i {
-  font-size: 1.4rem;
+.pag-arrow {
+  background: none;
+  border: 1px solid rgba(201, 169, 110, .3);
   color: var(--gold);
-  transform: scale(.8);
-  transition: transform var(--dur) var(--ease);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: .78rem;
+  flex-shrink: 0;
+  transition: background var(--dur), border-color var(--dur), transform var(--dur);
 }
 
-.galerie-item:hover .galerie-img    { transform: scale(1.05); }
-.galerie-item:hover .galerie-hover  { opacity: 1; }
-.galerie-item:hover .galerie-hover i { transform: scale(1); }
-.galerie-item.hidden                { display: none; }
+.pag-arrow:not(:disabled):hover {
+  background: var(--gold-glow);
+  border-color: var(--gold);
+  transform: scale(1.1);
+}
+
+.pag-arrow:disabled {
+  opacity: .25;
+  cursor: default;
+}
+
+.pag-counter {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 15px;
+  letter-spacing: 4px;
+  color: var(--gold);
+  user-select: none;
+  white-space: nowrap;
+}
+
+.pag-sep {
+  color: rgba(201, 169, 110, .3);
+  margin: 0 4px;
+}
+
+/* ── Vide après filtre ──────────────────────────────────────────── */
+.galerie-empty {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--grey-light);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  letter-spacing: .12em;
+  font-style: italic;
+}
 
 /* ── Lightbox ───────────────────────────────────────────────────── */
 .lightbox {
@@ -155,5 +304,13 @@
 .lightbox-next:hover  { transform: translateY(-50%) scale(1.1); }
 
 /* ── Responsive ─────────────────────────────────────────────────── */
-@media (max-width: 1024px) { .galerie-grid { columns: 2; } }
-@media (max-width: 768px)  { .galerie-grid { columns: 1; } }
+@media (max-width: 1024px) {
+  .galerie-magazine.comp-a,
+  .galerie-magazine.comp-b,
+  .galerie-magazine.comp-c { height: 420px; }
+}
+
+@media (max-width: 767px) {
+  .galerie-pagination { gap: 20px; margin-top: 36px; }
+  .mag-item__overlay  { padding: 14px 16px; }
+}
