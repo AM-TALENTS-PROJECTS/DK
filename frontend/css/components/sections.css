@@ -229,6 +229,11 @@
   object-position: top center;
 }
 
+/* Recadrage spécifique carte brunch */
+.prestation-card[data-category="brunch"] .prestation-img {
+  object-position: center bottom;
+}
+
 .histoire-img-fallback {
   position: absolute;
   inset: 0;
