@@ -314,3 +314,38 @@
   .galerie-pagination { gap: 20px; margin-top: 36px; }
   .mag-item__overlay  { padding: 14px 16px; }
 }
+
+/* ── Bloc réseaux sociaux ────────────────────────────────────────── */
+.galerie-reseaux {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  margin-top: 64px;
+  padding: 40px;
+  border: 1px solid rgba(201, 169, 110, 0.2);
+  border-radius: 2px;
+  text-align: center;
+}
+
+.galerie-reseaux-icons {
+  display: flex;
+  gap: 20px;
+  font-size: 2rem;
+  color: var(--gold);
+}
+
+.galerie-reseaux-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+}
+
+.galerie-reseaux p {
+  font-family: var(--font-title);
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
+  color: var(--white-soft);
+  margin: 0;
+  letter-spacing: 0.04em;
+}
