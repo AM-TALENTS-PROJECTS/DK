@@ -361,78 +361,51 @@
 .lieux-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
-
-@media (max-width: 1024px) {
-  .lieux-grid { grid-template-columns: repeat(2, 1fr); }
-}
-
-@media (max-width: 640px) {
-  .lieux-grid { grid-template-columns: 1fr; }
+  gap: 16px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .lieu-card {
   position: relative;
   overflow: hidden;
-  aspect-ratio: 16 / 10;
-  cursor: default;
+  aspect-ratio: 3 / 2;
+  cursor: pointer;
 }
 
-.lieu-img-wrap {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
-.lieu-img {
+.lieu-card img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
-  transition: transform 0.6s var(--ease);
+  object-position: center center;
+  transition: transform 0.6s ease;
 }
 
-.lieu-card:hover .lieu-img { transform: scale(1.06); }
+.lieu-card:hover img { transform: scale(1.05); }
 
 .lieu-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to bottom,
-    transparent 40%,
-    rgba(8, 8, 8, 0.85) 100%
-  );
-  transition: background var(--dur);
-}
-
-.lieu-card:hover .lieu-overlay {
-  background: linear-gradient(
-    to bottom,
-    rgba(8, 8, 8, 0.15) 0%,
-    rgba(8, 8, 8, 0.9) 100%
-  );
-}
-
-.lieu-name {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 20px 24px;
-  font-family: var(--font-title);
-  font-size: clamp(1rem, 1.8vw, 1.25rem);
-  font-weight: 400;
-  color: var(--gold);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  transform: translateY(4px);
-  transition: transform var(--dur), color var(--dur);
+  padding: 20px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
 }
 
-.lieu-card:hover .lieu-name {
-  transform: translateY(0);
-  color: var(--gold-light);
+.lieu-nom {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  letter-spacing: 2px;
+  color: #c9a96e;
+  text-transform: uppercase;
+}
+
+@media (max-width: 768px) {
+  .lieux-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 480px) {
+  .lieux-grid { grid-template-columns: 1fr; }
 }
 
 /* ══════════════════════════════════════════════════════════════════
