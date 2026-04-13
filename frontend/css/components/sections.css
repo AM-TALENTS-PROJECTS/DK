@@ -389,8 +389,6 @@
   width: 100px;
   height: auto;
   object-fit: contain;
-  filter: brightness(0) invert(1);
-  opacity: 0.9;
 }
 
 .certif-bd-fallback { font-size: 3rem; color: var(--gold); }
@@ -420,8 +418,6 @@
   width: 52px;
   height: auto;
   object-fit: contain;
-  filter: brightness(0) invert(1);
-  opacity: 0.85;
 }
 
 @media (max-width: 640px) {
