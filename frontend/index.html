@@ -32,7 +32,7 @@
     "@context": "https://schema.org",
     "@type": "FoodEstablishment",
     "name": "Diamanté K Traiteur",
-    "description": "Traiteur casher événementiel haut de gamme à Marseille. Spécialiste des mariages, cocktails, brunchs, shabbat et événements d'entreprise.",
+    "description": "Diamanté K, traiteur casher événementiel haut de gamme à Marseille, sous la supervision du Beth Din de Marseille.",
     "url": "https://www.diamantek-traiteur.com",
     "telephone": "+33613480116",
     "email": "diamantek.traiteur@gmail.com",
@@ -196,9 +196,8 @@
       <a href="#contact" class="btn-outline"><span>Nous contacter</span></a>
     </div>
 
-    <div class="hero-certifs reveal-up delay-4" aria-label="Certifications casher">
-      <span class="certif-badge"><i class="fa-solid fa-certificate" aria-hidden="true"></i> Halavi</span>
-      <span class="certif-badge"><i class="fa-solid fa-certificate" aria-hidden="true"></i> Bassari</span>
+    <div class="hero-certifs reveal-up delay-4" aria-label="Certification casher Beth Din de Marseille">
+      <span class="certif-badge"><i class="fa-solid fa-certificate" aria-hidden="true"></i> Beth Din de Marseille</span>
     </div>
   </div>
 
@@ -251,14 +250,19 @@
                class="histoire-img" loading="lazy">
           <div class="histoire-img-fallback" aria-hidden="true"></div>
         </div>
-        <div class="histoire-certifs" aria-label="Certifications casher">
-          <div class="certif-card">
-            <i class="fa-solid fa-certificate" aria-hidden="true"></i>
-            <div><strong>Laboratoire Halavi</strong><span>Certification lait</span></div>
+        <div class="histoire-certifs" aria-label="Certification casher Beth Din de Marseille">
+          <div class="certif-card certif-card--main">
+            <img src="/assets/logo-beth-din.png" alt="Logo Beth Din de Marseille" class="certif-logo-bd"
+                 onerror="this.outerHTML='<i class=\'fa-solid fa-certificate\' aria-hidden=\'true\'></i>'">
+            <div><strong>Beth Din de Marseille</strong><span>Supervision casher</span></div>
           </div>
           <div class="certif-card">
-            <i class="fa-solid fa-certificate" aria-hidden="true"></i>
-            <div><strong>Bassari</strong><span>Certification viande</span></div>
+            <i class="fa-solid fa-droplet" aria-hidden="true"></i>
+            <div><strong>Halavi</strong><span>Laboratoire lait</span></div>
+          </div>
+          <div class="certif-card">
+            <i class="fa-solid fa-drumstick-bite" aria-hidden="true"></i>
+            <div><strong>Bassari</strong><span>Laboratoire viande</span></div>
           </div>
         </div>
       </div>
@@ -271,7 +275,7 @@
           Depuis plus de 10 ans, <strong>Jérémie Ayache</strong> et les équipes de Diamanté K subliment vos événements avec une cuisine d'exception. Plus de <strong>1 000 prestations</strong> réalisées à travers la France et l'Europe, pour une clientèle d'entreprises et de particuliers des plus exigeants.
         </p>
 
-        <p>Certifié <strong>Halavi &amp; Bassari</strong>, Diamanté K incarne l'excellence de la gastronomie casher événementielle. Chaque détail est orchestré avec précision : du premier amuse-bouche aux pièces montées spectaculaires, nous créons des expériences culinaires inoubliables pour jusqu'à <strong>600 convives</strong>.</p>
+        <p>Sous la supervision du <strong>Beth Din de Marseille</strong>, Diamanté K incarne l'excellence de la gastronomie casher événementielle. Avec 2 laboratoires — <strong>Halavi</strong> (lait) &amp; <strong>Bassari</strong> (viande) — nous garantissons une conformité casher irréprochable, du premier amuse-bouche aux pièces montées spectaculaires, pour jusqu'à <strong>600 convives</strong>.</p>
 
 
         <div class="histoire-zone" aria-label="Zone d'intervention">
@@ -354,7 +358,7 @@
         </div>
         <div class="prestation-body">
           <h3>Shabbat</h3>
-          <p>Bar et Bat Mitsva, Brith, Pessah, Roch Hachana… Des tables exceptionnelles qui honorent vos traditions avec la certification casher Halavi &amp; Bassari.</p>
+          <p>Bar et Bat Mitsva, Brith, Pessah, Roch Hachana… Des tables exceptionnelles qui honorent vos traditions sous la supervision du Beth Din de Marseille.</p>
           <a href="#contact" class="btn-card"><span>Nous contacter</span><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
         </div>
       </article>
@@ -698,23 +702,37 @@
   <div class="container">
     <header class="section-header scroll-reveal">
       <span class="section-overtitle">Confiance &amp; qualité</span>
-      <h2 id="partenaires-title">Certifications &amp; Partenaires</h2>
+      <h2 id="partenaires-title">Certification Casher</h2>
     </header>
 
     <div class="certifications scroll-reveal">
-      <h3 class="sub-title">Certifications Casher</h3>
-      <div class="certif-grid">
-        <div class="certif-block">
-          <div class="certif-icon-big"><i class="fa-solid fa-certificate"></i></div>
-          <h4>Laboratoire Halavi</h4>
-          <p>Certification casher lait — garantie de conformité aux normes les plus strictes de la gastronomie casher.</p>
+
+      <!-- Beth Din -->
+      <div class="certif-bethdin">
+        <div class="certif-bethdin-logo">
+          <img src="/assets/logo-beth-din.png" alt="Beth Din de Marseille — supervision casher" class="certif-bd-img"
+               onerror="this.outerHTML='<i class=\'fa-solid fa-certificate certif-bd-fallback\' aria-hidden=\'true\'></i>'">
         </div>
-        <div class="certif-block">
-          <div class="certif-icon-big"><i class="fa-solid fa-certificate"></i></div>
-          <h4>Bassari</h4>
-          <p>Certification casher viande — rigueur absolue dans la sélection et la préparation des produits carnés.</p>
+        <div class="certif-bethdin-text">
+          <h3>Sous la supervision du Beth Din de Marseille</h3>
+          <p>Diamanté K est sous la supervision du Beth Din de Marseille. Il dispose de 2 laboratoires — Halavi &amp; Bassari — pour une conformité casher irréprochable.</p>
         </div>
       </div>
+
+      <!-- Laboratoires -->
+      <div class="certif-grid">
+        <div class="certif-block">
+          <div class="certif-icon-big"><i class="fa-solid fa-droplet"></i></div>
+          <h4>Halavi</h4>
+          <p>Laboratoire lait — garantie de conformité aux normes les plus strictes de la gastronomie casher.</p>
+        </div>
+        <div class="certif-block">
+          <div class="certif-icon-big"><i class="fa-solid fa-drumstick-bite"></i></div>
+          <h4>Bassari</h4>
+          <p>Laboratoire viande — rigueur absolue dans la sélection et la préparation des produits carnés.</p>
+        </div>
+      </div>
+
     </div>
 
   </div>
@@ -870,8 +888,7 @@
           <p class="footer-tagline">La Gastronomie d'Excellence</p>
           <p class="footer-desc">Traiteur événementiel casher haut de gamme à Marseille. +1 000 événements, +10 ans d'excellence à travers la France et l'Europe.</p>
           <div class="footer-certifs">
-            <span><i class="fa-solid fa-certificate"></i> Halavi</span>
-            <span><i class="fa-solid fa-certificate"></i> Bassari</span>
+            <span><i class="fa-solid fa-certificate"></i> Beth Din de Marseille</span>
           </div>
         </div>
 
