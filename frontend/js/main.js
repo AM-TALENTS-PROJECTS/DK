@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Branding console
   console.log(
-    '%c Diamanté K %c — Traiteur Kasher Marseille ',
+    '%c Diamanté K %c — Traiteur Casher Marseille ',
     'background:#c9a96e;color:#080808;font-weight:bold;padding:4px 0;font-size:14px;',
     'background:#080808;color:#c9a96e;padding:4px 6px;font-size:14px;'
   );
