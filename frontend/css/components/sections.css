@@ -351,6 +351,91 @@
 .zone-tags span:hover { background: rgba(201, 169, 110, .08); color: var(--white); }
 
 /* ══════════════════════════════════════════════════════════════════
+   NOS LIEUX D'EXCEPTION
+══════════════════════════════════════════════════════════════════ */
+.lieux {
+  padding: var(--section-pad) 0;
+  background: var(--black-soft);
+}
+
+.lieux-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+@media (max-width: 1024px) {
+  .lieux-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 640px) {
+  .lieux-grid { grid-template-columns: 1fr; }
+}
+
+.lieu-card {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 16 / 10;
+  cursor: default;
+}
+
+.lieu-img-wrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.lieu-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.6s var(--ease);
+}
+
+.lieu-card:hover .lieu-img { transform: scale(1.06); }
+
+.lieu-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 40%,
+    rgba(8, 8, 8, 0.85) 100%
+  );
+  transition: background var(--dur);
+}
+
+.lieu-card:hover .lieu-overlay {
+  background: linear-gradient(
+    to bottom,
+    rgba(8, 8, 8, 0.15) 0%,
+    rgba(8, 8, 8, 0.9) 100%
+  );
+}
+
+.lieu-name {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px 24px;
+  font-family: var(--font-title);
+  font-size: clamp(1rem, 1.8vw, 1.25rem);
+  font-weight: 400;
+  color: var(--gold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transform: translateY(4px);
+  transition: transform var(--dur), color var(--dur);
+}
+
+.lieu-card:hover .lieu-name {
+  transform: translateY(0);
+  color: var(--gold-light);
+}
+
+/* ══════════════════════════════════════════════════════════════════
    PARTENAIRES & CERTIFICATIONS
 ══════════════════════════════════════════════════════════════════ */
 .partenaires {
