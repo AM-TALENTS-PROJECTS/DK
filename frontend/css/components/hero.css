@@ -174,7 +174,57 @@
   100% { transform: scaleY(1); transform-origin: bottom; opacity: 0; }
 }
 
-/* ── Responsive ─────────────────────────────────────────────────── */
+/* ── Villes : version desktop (shorthand masqué) ────────────────── */
+.hero-location__short { display: none; }
+.hero-location__full  { display: inline; }
+
+/* ── Responsive mobile ──────────────────────────────────────────── */
 @media (max-width: 768px) {
-  .hero-ctas { flex-direction: column; align-items: center; }
+  /* Espacements verticaux allégés */
+  .hero-content {
+    padding-top: 100px;
+    padding-bottom: 72px;
+  }
+
+  /* Badge Google : marges réduites */
+  .hero-badge {
+    margin-bottom: 20px;
+    font-size: .74rem;
+    padding: 7px 16px;
+  }
+
+  /* Titre : marges réduites */
+  .hero-title {
+    margin-bottom: 16px;
+  }
+
+  /* Sous-titre : marges réduites */
+  .hero-subtitle {
+    margin-bottom: 28px;
+    line-height: 1.7;
+  }
+
+  /* Villes : version condensée sur mobile */
+  .hero-location__full  { display: none; }
+  .hero-location__short { display: block; }
+
+  /* CTAs : colonne + marges réduites */
+  .hero-ctas {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+
+  /* Boutons : pleine largeur sur mobile */
+  .hero-ctas .btn-primary,
+  .hero-ctas .btn-outline {
+    width: 100%;
+    max-width: 320px;
+    justify-content: center;
+  }
+
+  /* Indicateur scroll : moins de place */
+  .scroll-indicator { bottom: 24px; }
+  .scroll-line { height: 40px; }
 }
