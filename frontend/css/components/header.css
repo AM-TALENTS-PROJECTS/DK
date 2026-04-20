@@ -106,6 +106,9 @@
 .nav-tel:hover { color: var(--gold-light); }
 
 .btn-devis {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
   padding: 10px 22px;
   background: transparent;
   border: 1px solid var(--gold);
@@ -131,7 +134,8 @@
   flex-direction: column;
   justify-content: center;
   gap: 5px;
-  width: 36px; height: 36px;
+  width: 44px; height: 44px;
+  min-width: 44px; min-height: 44px;
   background: none;
   border: none;
   cursor: pointer;

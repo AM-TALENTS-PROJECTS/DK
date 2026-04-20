@@ -424,11 +424,13 @@
   align-items: center;
   gap: 40px;
   max-width: 800px;
+  width: 100%;
   margin: 0 auto clamp(40px, 5vw, 64px);
   padding: 40px;
   border: 1px solid rgba(201, 169, 110, 0.3);
   background: rgba(201, 169, 110, 0.04);
   position: relative;
+  box-sizing: border-box;
 }
 
 .certif-bethdin::before {
@@ -476,10 +478,6 @@
   width: 52px;
   height: auto;
   object-fit: contain;
-}
-
-@media (max-width: 640px) {
-  .certif-bethdin { flex-direction: column; text-align: center; gap: 24px; }
 }
 
 .certif-grid {
@@ -754,8 +752,11 @@ textarea { resize: vertical; min-height: 100px; }
 @media (max-width: 768px) {
   .prestations-grid { grid-template-columns: 1fr; }
   .chiffre-item:nth-child(2)::after { display: none; }
+  /* Certif side-by-side sous l'image histoire */
   .histoire-certifs { flex-direction: row; gap: 12px; }
-  .certif-card { flex: 1; }
+  .certif-card { flex: 1; min-width: 0; }
+  .certif-card strong,
+  .certif-card span { word-break: break-word; }
   .certif-grid { grid-template-columns: 1fr; }
   .partner-item  { flex: 0 0 calc(50% - 2px); }
   .form-row { grid-template-columns: 1fr; }
@@ -764,7 +765,37 @@ textarea { resize: vertical; min-height: 100px; }
   .ref-logo-item { padding: 10px 16px; }
 }
 
+@media (max-width: 640px) {
+  /* Certif bethdin : colonne + padding réduit */
+  .certif-bethdin {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+    padding: 24px 20px;
+  }
+  /* Certif blocs */
+  .certif-block { padding: 28px 16px; }
+  /* Certifs histoire : repasse en colonne sur petit écran */
+  .histoire-certifs { flex-direction: column; }
+  .certif-card { flex: none; width: 100%; }
+  /* Note prestations : empile icône + texte */
+  .prestations-note {
+    flex-direction: column;
+    padding: 20px 16px;
+    gap: 12px;
+  }
+  /* Badges partenaires sur 2 colonnes */
+  .partner-item { flex: 0 0 calc(50% - 2px); }
+  /* Contact badge */
+  .contact-badge { flex-wrap: wrap; }
+}
+
 @media (max-width: 480px) {
   .chiffres-grid { grid-template-columns: 1fr 1fr; }
+  .chiffre-item { padding: 28px 12px; }
   .chiffre-item::after { display: none; }
+  /* Partenaires : pleine largeur sur très petit écran */
+  .partner-item { flex: 0 0 calc(50% - 2px); }
+  /* Formulaire */
+  input, select, textarea { font-size: 1rem; } /* évite le zoom auto iOS */
 }
