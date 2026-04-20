@@ -150,11 +150,28 @@
     </div>
 
     <button class="nav-burger" id="nav-burger"
-            aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="nav-menu">
+            aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobile-menu">
       <span></span><span></span><span></span>
     </button>
   </nav>
 </header>
+
+<!-- ── Menu mobile overlay (hors header pour éviter le bug backdrop-filter) ── -->
+<div id="mobile-menu" class="mobile-menu" role="dialog" aria-modal="true"
+     aria-label="Menu de navigation" aria-hidden="true">
+  <ul class="mobile-menu__list">
+    <li><a href="#accueil"     class="mobile-menu__link">Accueil</a></li>
+    <li><a href="#prestations" class="mobile-menu__link">Nos Prestations</a></li>
+    <li><a href="#histoire"    class="mobile-menu__link">À Propos</a></li>
+    <li><a href="#partenaires" class="mobile-menu__link">Casher</a></li>
+    <li><a href="#galerie"     class="mobile-menu__link">Galerie</a></li>
+    <li><a href="#contact"     class="mobile-menu__link">Contact</a></li>
+  </ul>
+  <a href="tel:0613480116" class="mobile-menu__tel">
+    <i class="fa-solid fa-phone" aria-hidden="true"></i>
+    06.13.48.01.16
+  </a>
+</div>
 
 <!-- ═══════════════════════════════════════════════════════════════════
      HERO

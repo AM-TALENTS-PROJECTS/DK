@@ -155,37 +155,84 @@
 
 /* ── Responsive ─────────────────────────────────────────────────── */
 @media (max-width: 1024px) {
-  .nav-links { display: none; }
-  .nav-tel   { display: none; }
+  .nav-links  { display: none; }
+  .nav-tel    { display: none; }
   .nav-burger { display: flex; }
+  .nav-actions { position: relative; z-index: 1; }
+}
 
-  /* Menu mobile plein écran */
-  .nav-links.open {
-    display: flex;
-    flex-direction: column;
-    position: fixed;
-    inset: 0;
-    background: rgba(8, 8, 8, .98);
-    z-index: 800;
-    align-items: center;
-    justify-content: center;
-    gap: 0;
-    padding: 80px 40px 40px;
-  }
+/* ══════════════════════════════════════════════════════════════════
+   MENU MOBILE OVERLAY
+   Positionné hors du <header> pour contourner le bug backdrop-filter
+   (backdrop-filter crée un nouveau containing block pour position:fixed)
+══════════════════════════════════════════════════════════════════ */
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 9500;
+  background: rgba(8, 8, 8, .98);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  padding: 80px 40px 48px;
+  /* État fermé */
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity .35s var(--ease), visibility .35s;
+}
 
-  .nav-links.open .nav-link {
-    font-size: 1.6rem;
-    letter-spacing: .08em;
-    padding: 16px 0;
-    font-family: var(--font-serif);
-    font-weight: 300;
-    color: var(--white);
-    width: 100%;
-    text-align: center;
-    border-bottom: 1px solid var(--grey-border);
-  }
+.mobile-menu.open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
 
-  .nav-links.open .nav-link:last-child { border-bottom: none; }
-  .nav-links.open .nav-link::after { display: none; }
-  .nav-actions { z-index: 801; position: relative; }
+.mobile-menu__list {
+  list-style: none;
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.mobile-menu__link {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: clamp(1.4rem, 5vw, 1.8rem);
+  font-weight: 300;
+  letter-spacing: .08em;
+  color: var(--white);
+  padding: 16px 0;
+  border-bottom: 1px solid var(--grey-border);
+  transition: color var(--dur);
+}
+
+.mobile-menu__list li:last-child .mobile-menu__link {
+  border-bottom: none;
+}
+
+.mobile-menu__link:hover,
+.mobile-menu__link:focus-visible { color: var(--gold); outline: none; }
+
+.mobile-menu__tel {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 36px;
+  font-size: .9rem;
+  font-weight: 400;
+  letter-spacing: .1em;
+  color: var(--gold);
+  min-height: 44px;
+  padding: 0 8px;
+  transition: color var(--dur);
+}
+
+.mobile-menu__tel:hover { color: var(--gold-light); }
+
+/* Masqué sur desktop */
+@media (min-width: 1025px) {
+  .mobile-menu { display: none !important; }
 }

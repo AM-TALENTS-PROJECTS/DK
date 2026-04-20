@@ -32,32 +32,46 @@ export function initNavigation() {
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
-  // Menu burger mobile
-  if (burger && menu) {
+  // Menu mobile — overlay hors du header (#mobile-menu, pas #nav-menu)
+  const mobileMenu = document.getElementById('mobile-menu');
+  if (burger && mobileMenu) {
     const closeMenu = () => {
-      menu.classList.remove('open');
+      mobileMenu.classList.remove('open');
+      mobileMenu.setAttribute('aria-hidden', 'true');
       burger.classList.remove('open');
       burger.setAttribute('aria-expanded', 'false');
+      burger.setAttribute('aria-label', 'Ouvrir le menu');
       document.body.style.overflow = '';
     };
 
+    const openMenu = () => {
+      mobileMenu.classList.add('open');
+      mobileMenu.setAttribute('aria-hidden', 'false');
+      burger.classList.add('open');
+      burger.setAttribute('aria-expanded', 'true');
+      burger.setAttribute('aria-label', 'Fermer le menu');
+      document.body.style.overflow = 'hidden';
+      /* Focus sur le premier lien pour l'accessibilité clavier */
+      mobileMenu.querySelector('.mobile-menu__link')?.focus();
+    };
+
     burger.addEventListener('click', () => {
-      const isOpen = menu.classList.toggle('open');
-      burger.classList.toggle('open', isOpen);
-      burger.setAttribute('aria-expanded', String(isOpen));
-      document.body.style.overflow = isOpen ? 'hidden' : '';
+      mobileMenu.classList.contains('open') ? closeMenu() : openMenu();
     });
 
-    menu.querySelectorAll('.nav-link').forEach(link => link.addEventListener('click', closeMenu));
-
-    document.addEventListener('click', e => {
-      if (menu.classList.contains('open') && !menu.contains(e.target) && !burger.contains(e.target)) {
-        closeMenu();
-      }
+    /* Fermeture au clic sur un lien */
+    mobileMenu.querySelectorAll('.mobile-menu__link, .mobile-menu__tel').forEach(link => {
+      link.addEventListener('click', closeMenu);
     });
 
+    /* Fermeture clic en dehors */
+    mobileMenu.addEventListener('click', e => {
+      if (e.target === mobileMenu) closeMenu();
+    });
+
+    /* Fermeture touche Échap */
     document.addEventListener('keydown', e => {
-      if (e.key === 'Escape' && menu.classList.contains('open')) {
+      if (e.key === 'Escape' && mobileMenu.classList.contains('open')) {
         closeMenu();
         burger.focus();
       }
