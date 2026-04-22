@@ -34,7 +34,12 @@ diamantek/
 │       └── express-session.d.ts
 │
 ├── frontend/                   # Fichiers statiques servis par NestJS
-│   ├── index.html              # Page principale (single page)
+│   ├── index.html              # Accueil : Hero + Chiffres + Aperçu prestations + Badge avis
+│   ├── notre-histoire.html     # Histoire Jérémie Ayache + Certification Casher
+│   ├── nos-prestations.html    # 6 cartes prestations détaillées + CTA devis
+│   ├── galerie.html            # Galerie paginée + filtres + Lieux d'Exception + lightbox
+│   ├── avis.html               # 8 avis Google + carousel + CTA Google
+│   ├── contact.html            # Formulaire devis EmailJS + coordonnées
 │   ├── mentions-legales.html
 │   ├── politique-confidentialite.html
 │   ├── cgv.html
@@ -48,7 +53,8 @@ diamantek/
 │   │       ├── gallery.css     # Galerie masonry + lightbox
 │   │       └── footer.css      # Footer + responsive global
 │   │   └── pages/
-│   │       └── legal.css       # Pages légales
+│   │       ├── legal.css       # Pages légales
+│   │       └── inner.css       # Pages internes (page-hero, page-cta, avis-teaser)
 │   ├── js/
 │   │   ├── main.js             # Orchestration — importe tous les modules
 │   │   ├── modules/
@@ -162,6 +168,11 @@ Les variables CSS sont dans `frontend/css/main.css` section `:root`.
 | Méthode | Route | Description |
 |---|---|---|
 | `GET` | `/` | Sert `frontend/index.html` |
+| `GET` | `/notre-histoire` | Page histoire + certifications |
+| `GET` | `/nos-prestations` | Page prestations détaillées |
+| `GET` | `/galerie` | Page galerie + lieux d'exception |
+| `GET` | `/avis` | Page avis Google |
+| `GET` | `/contact` | Page contact + formulaire devis |
 | `GET` | `/mentions-legales` | Page mentions légales |
 | `GET` | `/politique-confidentialite` | Page RGPD |
 | `GET` | `/cgv` | Page CGV |
@@ -213,3 +224,18 @@ Les variables CSS sont dans `frontend/css/main.css` section `:root`.
 - **Canonical tags** : déjà présents sur toutes les pages
 - **Sitemap/robots.txt** : déjà sur le bon domaine (www.diamantektraiteur.com)
 - **URLs Hostinger staging** : aucune trouvée dans les fichiers frontend (déjà propres)
+
+### Session 2026-04-22 (Conversion single-page → multi-pages)
+**Réalisé** :
+- **Architecture multi-pages** : conversion complète de la single-page en 5 pages dédiées + homepage allégée
+  - `/notre-histoire` — Histoire de Jérémie Ayache + Certification Casher (Beth Din, Halavi, Bassari)
+  - `/nos-prestations` — 6 cartes prestations complètes + CTA devis
+  - `/galerie` — Galerie magazine paginée (28 photos) + filtres par catégorie + Lieux d'Exception + lightbox
+  - `/avis` — 8 avis Google vérifiés en carousel + CTA Google
+  - `/contact` — Formulaire devis EmailJS + coordonnées complètes
+- **Homepage allégée** : Hero + Chiffres clés + Aperçu 6 prestations (CTA "En savoir plus" → /nos-prestations) + Badge avis 4,9/5 → /avis
+- **Nouveau CSS** : `frontend/css/pages/inner.css` (`.page-hero`, `.page-cta`, `.avis-teaser`)
+- **Nouveau backend** : 5 routes NestJS ajoutées (`/notre-histoire`, `/nos-prestations`, `/galerie`, `/avis`, `/contact`)
+- **Navigation** : mise à jour sur toutes les pages (7 items : Accueil, Nos Prestations, À Propos, Casher, Galerie, Avis, Contact)
+- **Sitemap** : mis à jour avec les 5 nouvelles URLs (ancres supprimées, vraies pages ajoutées)
+- **Pages légales** : navigation et footer mis à jour (tous les liens `/#ancre` → vraies URLs)

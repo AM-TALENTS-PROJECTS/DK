@@ -5,45 +5,67 @@
   <!-- Page principale -->
   <url>
     <loc>https://www.diamantek-traiteur.com/</loc>
-    <lastmod>2026-03-30</lastmod>
+    <lastmod>2026-04-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
 
-  <!-- Sections (ancres SEO) -->
+  <!-- Pages principales -->
   <url>
-    <loc>https://www.diamantek-traiteur.com/#prestations</loc>
-    <lastmod>2026-03-30</lastmod>
+    <loc>https://www.diamantek-traiteur.com/nos-prestations</loc>
+    <lastmod>2026-04-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://www.diamantek-traiteur.com/#histoire</loc>
-    <lastmod>2026-03-30</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://www.diamantek-traiteur.com/#galerie</loc>
-    <lastmod>2026-03-30</lastmod>
+    <loc>https://www.diamantek-traiteur.com/contact</loc>
+    <lastmod>2026-04-22</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://www.diamantek-traiteur.com/#avis</loc>
-    <lastmod>2026-03-30</lastmod>
+    <loc>https://www.diamantek-traiteur.com/notre-histoire</loc>
+    <lastmod>2026-04-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.diamantek-traiteur.com/galerie</loc>
+    <lastmod>2026-04-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://www.diamantek-traiteur.com/#contact</loc>
-    <lastmod>2026-03-30</lastmod>
+    <loc>https://www.diamantek-traiteur.com/avis</loc>
+    <lastmod>2026-04-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Pages légales -->
+  <url>
+    <loc>https://www.diamantek-traiteur.com/mentions-legales</loc>
+    <lastmod>2026-04-22</lastmod>
     <changefreq>yearly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.3</priority>
+  </url>
+
+  <url>
+    <loc>https://www.diamantek-traiteur.com/politique-confidentialite</loc>
+    <lastmod>2026-04-22</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <url>
+    <loc>https://www.diamantek-traiteur.com/cgv</loc>
+    <lastmod>2026-04-22</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
   </url>
 
 </urlset>
