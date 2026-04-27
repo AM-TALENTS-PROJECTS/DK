@@ -1,0 +1,189 @@
+/* ═══════════════════════════════════════════════════════════════════
+   inner.css — Styles partagés pour les pages internes
+   (notre-histoire, nos-prestations, galerie, avis, contact)
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ── En-tête de page interne ────────────────────────────────────── */
+.page-hero {
+  padding: clamp(100px, 14vw, 180px) 0 clamp(50px, 6vw, 80px);
+  background: var(--black-soft);
+  border-bottom: 1px solid var(--grey-border);
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+
+.page-hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+}
+
+.page-hero::after {
+  content: '';
+  position: absolute;
+  bottom: -1px; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+}
+
+.page-hero h1 {
+  font-family: var(--font-serif);
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 300;
+  color: var(--white);
+  margin-bottom: 16px;
+  line-height: 1.1;
+}
+
+.page-hero h1 em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+.page-hero p {
+  font-size: .9rem;
+  color: var(--grey);
+  max-width: 600px;
+  margin: 12px auto 0;
+  line-height: 1.75;
+}
+
+/* ── CTA bas de page ────────────────────────────────────────────── */
+.page-cta {
+  padding: var(--section-pad) 0;
+  background: var(--black-soft);
+  text-align: center;
+  border-top: 1px solid var(--grey-border);
+  position: relative;
+}
+
+.page-cta::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+}
+
+.page-cta__inner {
+  max-width: 640px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.page-cta h2 {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 300;
+  color: var(--white);
+  line-height: 1.2;
+}
+
+.page-cta h2 em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+.page-cta p {
+  font-size: .9rem;
+  color: var(--grey-light);
+  line-height: 1.75;
+  max-width: 500px;
+}
+
+.page-cta .btn-row {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* ── Badge avis teaser (homepage) ──────────────────────────────── */
+.avis-teaser {
+  padding: clamp(60px, 8vw, 100px) 0;
+  background: var(--black-soft);
+  border-top: 1px solid var(--grey-border);
+  border-bottom: 1px solid var(--grey-border);
+  text-align: center;
+  position: relative;
+}
+
+.avis-teaser::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+}
+
+.avis-teaser__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+.avis-teaser__icon {
+  font-size: 2.4rem;
+  color: var(--gold);
+  opacity: .7;
+}
+
+.avis-teaser__stars {
+  font-size: 2rem;
+  color: var(--gold);
+  letter-spacing: .08em;
+}
+
+.avis-teaser__score {
+  font-family: var(--font-serif);
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  color: var(--gold);
+  line-height: 1;
+}
+
+.avis-teaser__label {
+  font-size: .78rem;
+  font-weight: 500;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--grey-light);
+}
+
+.avis-teaser__text {
+  font-size: .9rem;
+  color: var(--grey);
+  line-height: 1.75;
+  max-width: 480px;
+}
+
+/* ── Page avis — grille ─────────────────────────────────────────── */
+.avis-page {
+  padding: var(--section-pad) 0;
+  background: var(--black);
+}
+
+.avis-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 20px;
+  margin-bottom: 48px;
+}
+
+/* ── Responsive ─────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .page-hero { text-align: left; }
+  .avis-teaser { text-align: left; }
+  .avis-teaser__inner { align-items: flex-start; }
+  .page-cta { text-align: left; }
+  .page-cta__inner { align-items: flex-start; }
+  .avis-grid { grid-template-columns: 1fr; }
+}
