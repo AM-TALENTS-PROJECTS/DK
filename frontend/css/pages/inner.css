@@ -178,7 +178,7 @@
   margin-bottom: 48px;
 }
 
-/* ── Responsive ─────────────────────────────────────────────────── */
+/* ── Responsive pages internes ──────────────────────────────────── */
 @media (max-width: 768px) {
   .page-hero { text-align: left; }
   .avis-teaser { text-align: left; }
@@ -186,4 +186,314 @@
   .page-cta { text-align: left; }
   .page-cta__inner { align-items: flex-start; }
   .avis-grid { grid-template-columns: 1fr; }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   HOMEPAGE — Nouvelles sections
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ── Storytelling Jérémie ───────────────────────────────────────── */
+.storytelling {
+  padding: var(--section-pad) 0;
+  background: var(--black-soft);
+  position: relative;
+  overflow: hidden;
+}
+
+.storytelling::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+}
+
+/* Aligner verticalement au centre (override du align-items: start) */
+.storytelling .histoire-grid {
+  align-items: center;
+}
+
+/* ── Prestations galerie ────────────────────────────────────────── */
+.prestations-galerie {
+  padding: var(--section-pad) 0;
+  background: var(--black);
+}
+
+.prestations-galerie__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3px;
+  margin-bottom: 0;
+}
+
+.prestations-galerie__item {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  cursor: pointer;
+}
+
+.prestations-galerie__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .8s var(--ease);
+  display: block;
+}
+
+.prestations-galerie__item:hover .prestations-galerie__img {
+  transform: scale(1.07);
+}
+
+.prestations-galerie__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(8, 8, 8, .75) 0%, rgba(8, 8, 8, .1) 60%);
+  transition: background var(--dur);
+}
+
+.prestations-galerie__item:hover .prestations-galerie__overlay {
+  background: linear-gradient(to top, rgba(8, 8, 8, .9) 0%, rgba(8, 8, 8, .25) 100%);
+}
+
+.prestations-galerie__label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px 20px 24px;
+  font-family: var(--font-serif);
+  font-size: clamp(1.15rem, 2vw, 1.6rem);
+  font-weight: 400;
+  color: var(--white);
+  letter-spacing: .04em;
+  text-align: center;
+  transition: color var(--dur), letter-spacing var(--dur);
+  z-index: 1;
+}
+
+.prestations-galerie__item:hover .prestations-galerie__label {
+  color: var(--gold-light);
+  letter-spacing: .08em;
+}
+
+.prestations-galerie__cta {
+  text-align: center;
+  padding-top: clamp(40px, 5vw, 64px);
+}
+
+/* ── Zones d'intervention ───────────────────────────────────────── */
+.zones-intervention {
+  padding: var(--section-pad) 0;
+  background: var(--black-soft);
+  position: relative;
+}
+
+.zones-intervention::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+}
+
+.zones-intervention__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(48px, 7vw, 100px);
+  align-items: center;
+}
+
+.zones-intervention__map {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.zones-intervention__map svg {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid var(--grey-border);
+  filter: drop-shadow(0 0 32px rgba(196, 146, 42, .1));
+}
+
+.zones-intervention__content h2 {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 3.5vw, 3.2rem);
+  font-weight: 400;
+  color: var(--white);
+  margin-bottom: 24px;
+  line-height: 1.2;
+}
+
+.zones-intervention__content h2 em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+.zones-intervention__content > p {
+  font-size: .9rem;
+  color: var(--grey-light);
+  line-height: 1.8;
+  margin-bottom: 28px;
+}
+
+.zones-intervention__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 36px;
+  padding: 0;
+}
+
+.zones-intervention__list li {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: .76rem;
+  font-weight: 400;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--grey-light);
+  padding: 5px 16px;
+  border: 1px solid rgba(196, 146, 42, .2);
+  border-radius: 40px;
+  transition: background var(--dur), color var(--dur), border-color var(--dur);
+}
+
+.zones-intervention__list li i {
+  color: var(--gold);
+  font-size: .68rem;
+}
+
+.zones-intervention__list li:hover {
+  background: rgba(196, 146, 42, .08);
+  color: var(--white);
+  border-color: rgba(196, 146, 42, .45);
+}
+
+/* ── Certifications casher ──────────────────────────────────────── */
+.certifications-home {
+  padding: var(--section-pad) 0;
+  background: var(--black);
+  position: relative;
+}
+
+.certifications-home::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+}
+
+.certifications-home__cta {
+  text-align: center;
+  margin-top: clamp(40px, 5vw, 60px);
+}
+
+/* ── Feed Instagram ─────────────────────────────────────────────── */
+.instagram-feed {
+  padding: var(--section-pad) 0;
+  background: var(--black-soft);
+  position: relative;
+}
+
+.instagram-feed::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+}
+
+.instagram-feed__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
+  margin-bottom: clamp(36px, 5vw, 56px);
+}
+
+.instagram-placeholder {
+  aspect-ratio: 1;
+  background: var(--black-card);
+  border: 1px solid var(--grey-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--dur), border-color var(--dur);
+}
+
+.instagram-placeholder:hover {
+  background: rgba(196, 146, 42, .05);
+  border-color: rgba(196, 146, 42, .2);
+}
+
+.instagram-placeholder i {
+  font-size: 2rem;
+  color: var(--grey-border);
+  transition: color var(--dur);
+}
+
+.instagram-placeholder:hover i {
+  color: rgba(196, 146, 42, .35);
+}
+
+.instagram-feed__cta {
+  text-align: center;
+}
+
+/* ── Avis home (3 cartes statiques) ────────────────────────────── */
+.avis-home {
+  padding: var(--section-pad) 0;
+  background: var(--black);
+  position: relative;
+}
+
+.avis-home::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+}
+
+.avis-home__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: clamp(36px, 5vw, 56px);
+}
+
+.avis-home__cta {
+  text-align: center;
+}
+
+/* ── Responsive homepage sections ──────────────────────────────── */
+@media (max-width: 1200px) {
+  .prestations-galerie__grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 1024px) {
+  .zones-intervention__grid {
+    grid-template-columns: 1fr;
+  }
+  .zones-intervention__map svg {
+    max-width: 480px;
+    margin: 0 auto;
+  }
+  .prestations-galerie__grid { grid-template-columns: repeat(2, 1fr); }
+  .avis-home__grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .prestations-galerie__grid { grid-template-columns: repeat(2, 1fr); }
+  .instagram-feed__grid { grid-template-columns: repeat(3, 1fr); }
+  .avis-home__grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 480px) {
+  .prestations-galerie__grid { grid-template-columns: 1fr 1fr; }
+  .instagram-feed__grid { grid-template-columns: repeat(2, 1fr); }
+  .zones-intervention__map svg { max-width: 100%; }
 }

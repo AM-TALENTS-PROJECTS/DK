@@ -239,3 +239,14 @@ Les variables CSS sont dans `frontend/css/main.css` section `:root`.
 - **Navigation** : mise à jour sur toutes les pages (7 items : Accueil, Nos Prestations, À Propos, Casher, Galerie, Avis, Contact)
 - **Sitemap** : mis à jour avec les 5 nouvelles URLs (ancres supprimées, vraies pages ajoutées)
 - **Pages légales** : navigation et footer mis à jour (tous les liens `/#ancre` → vraies URLs)
+
+### Session 2026-05-06 (Restructuration complète de la homepage)
+**Réalisé** :
+- **Sections supprimées** : ancienne section prestations (cards avec descriptions) + ancienne section avis-teaser (badge simple)
+- **Section ajoutée — Storytelling Jérémie** : photo `jeremy-ayache.jpg` à gauche, texte + certifications Halavi/Bassari à droite. Commentaire `<!-- TODO Billy : retoucher photo Jérémie -->` sur la balise `<img>`. Utilise les classes `.histoire-grid` / `.histoire-img-wrap` / `.histoire-content` existantes.
+- **Section modifiée — Nos Prestations** : nouveau format galerie photo pleine largeur (grille 3×2) avec uniquement l'étiquette en overlay (Mariage, Bar Mitsva, Brunch, Cocktail Dinatoire, Événements d'Entreprise, International). Classe `.prestations-galerie` + sous-classes.
+- **Section ajoutée — Zones d'intervention** : carte SVG Europe inline (fond #080808, contours or, points dorés sur Marseille, Nice, Cannes, Montpellier, Toulouse, Corse, Italie du Nord, Barcelone) à gauche + texte + liste zones à droite.
+- **Section ajoutée — Certifications casher** : bloc Beth Din de Marseille + grille 2 colonnes Halavi / Bassari. Réutilise les classes `.certif-bethdin`, `.certif-grid`, `.certif-block` existantes.
+- **Section ajoutée — Feed Instagram** : grille 3×2 de placeholders visuels, `id="instagram-feed"`, commentaire `<!-- TODO : configurer token Instagram Basic Display API -->`.
+- **Section modifiée — Avis** : 3 avis statiques (Vincent P., Lea OR, Benjamin Perez) en grille 3 colonnes + CTA "Découvrir tous nos avis" → /avis. Remplace le badge avis-teaser.
+- **CSS** : ajout de ~200 lignes dans `inner.css` pour toutes les nouvelles classes homepage.
