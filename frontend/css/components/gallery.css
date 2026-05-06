@@ -349,3 +349,12 @@
   margin: 0;
   letter-spacing: 0.04em;
 }
+
+/* Wrapper section autonome (après déplacement post-lieux) */
+.galerie-reseaux-section {
+  padding: var(--section-pad) 0;
+  background: var(--black-soft);
+}
+.galerie-reseaux-section .galerie-reseaux {
+  margin-top: 0;
+}
