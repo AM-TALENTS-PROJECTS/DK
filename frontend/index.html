@@ -83,13 +83,32 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link rel="icon" type="image/png" href="/assets/logo-diamantek.png">
-  <link rel="apple-touch-icon" href="/assets/logo-diamantek.png">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23080808'/><text y='.9em' font-size='60' x='50%' text-anchor='middle' fill='%23c9a96e' font-family='serif'>DK</text></svg>">
 
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/pages/inner.css">
 
   <script type="module" src="js/main.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/tarteaucitronjs@latest/tarteaucitron.js"></script>
+  <script>
+  tarteaucitron.init({
+    "privacyUrl": "/politique-confidentialite",
+    "bodyPosition": "bottom",
+    "orientation": "bottom",
+    "DenyAllCta": true,
+    "AcceptAllCta": true,
+    "highPrivacy": true,
+    "removeCredit": true
+  });
+  (tarteaucitron.job = tarteaucitron.job || []).push('gtag');
+  </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3QQH9VDH6D"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-3QQH9VDH6D');
+  </script>
 </head>
 
 <body>

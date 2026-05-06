@@ -27,9 +27,9 @@ export class SiteController {
     res.sendFile(path.join(this.frontendDir, 'cgv.html'));
   }
 
-  @Get('/notre-histoire')
-  notreHistoire(@Res() res: Response): void {
-    res.sendFile(path.join(this.frontendDir, 'notre-histoire.html'));
+  @Get('/galerie')
+  galerie(@Res() res: Response): void {
+    res.sendFile(path.join(this.frontendDir, 'galerie.html'));
   }
 
   @Get('/nos-prestations')
@@ -37,9 +37,9 @@ export class SiteController {
     res.sendFile(path.join(this.frontendDir, 'nos-prestations.html'));
   }
 
-  @Get('/galerie')
-  galerie(@Res() res: Response): void {
-    res.sendFile(path.join(this.frontendDir, 'galerie.html'));
+  @Get('/notre-histoire')
+  notreHistoire(@Res() res: Response): void {
+    res.sendFile(path.join(this.frontendDir, 'notre-histoire.html'));
   }
 
   @Get('/avis')
@@ -50,6 +50,11 @@ export class SiteController {
   @Get('/contact')
   contact(@Res() res: Response): void {
     res.sendFile(path.join(this.frontendDir, 'contact.html'));
+  }
+
+  @Get('/404')
+  notFound(@Res() res: Response): void {
+    res.sendFile(path.join(this.frontendDir, '404.html'));
   }
 
   @Get('/sitemap.xml')
