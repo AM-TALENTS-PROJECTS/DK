@@ -82,7 +82,7 @@
 .prestations-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 2px;
+  gap: 0 2px;
 }
 
 .prestation-card {
