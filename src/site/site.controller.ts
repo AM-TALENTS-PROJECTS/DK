@@ -27,9 +27,9 @@ export class SiteController {
     res.sendFile(path.join(this.frontendDir, 'cgv.html'));
   }
 
-  @Get('/galerie')
-  galerie(@Res() res: Response): void {
-    res.sendFile(path.join(this.frontendDir, 'galerie.html'));
+  @Get('/nos-evenements')
+  nosEvenements(@Res() res: Response): void {
+    res.sendFile(path.join(this.frontendDir, 'nos-evenements.html'));
   }
 
   @Get('/nos-prestations')
